@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".boarding.OnBoardingFragment">
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_margin="@dimen/_9sdp"
+        android:src="@drawable/secure"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trusted Service"
+        android:textSize="@dimen/_25sdp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boarding_pay"
+        android:textSize="@dimen/_20sdp"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/_9sdp"
+        android:fontFamily="@font/sourgummy"/>
+
+</LinearLayout>
