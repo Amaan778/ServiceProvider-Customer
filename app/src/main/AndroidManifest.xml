@@ -13,10 +13,10 @@
         android:theme="@style/Theme.ServiceProviderCust"
         tools:targetApi="31">
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".boarding.OnBoardingScreen"
             android:exported="false" />
         <activity
-            android:name=".boarding.OnBoardingScreen"
+            android:name=".auth.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
