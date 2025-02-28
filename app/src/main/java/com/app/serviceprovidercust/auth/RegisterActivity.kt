@@ -97,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             else{
 
-
+                showdialog()
                 auth.createUserWithEmailAndPassword(mail,pass)
                     .addOnCompleteListener(this){task->
                         if (task.isSuccessful){
@@ -123,5 +123,12 @@ class RegisterActivity : AppCompatActivity() {
 
         }
 
+    }
+    private fun showdialog(){
+        diaog= Dialog(this)
+        diaog?.setContentView(R.layout.progress_dialog)
+        diaog?.setCancelable(false)
+        diaog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        diaog?.show()
     }
 }
