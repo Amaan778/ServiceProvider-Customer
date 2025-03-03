@@ -49,7 +49,7 @@ class RegisterActivity : AppCompatActivity() {
         val passwordInputLayout = findViewById<TextInputLayout>(R.id.passwordInputLayout)
 
         // Set the initial icon to the "eye-off" drawable (password hidden)
-//        passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeclose)
+        passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeclose)
 
         // Variable to keep track of password visibility state
         var isPasswordVisible = false
@@ -61,11 +61,11 @@ class RegisterActivity : AppCompatActivity() {
             if (isPasswordVisible) {
                 // Show password
                 password.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-//                passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeopen)
+                passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeopen)
             } else {
                 // Hide password
                 password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-//                passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeclose)
+                passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeclose)
             }
 
             // Move the cursor to the end after toggling
