@@ -4,15 +4,20 @@ import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.app.serviceprovidercust.R
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var email: EditText
@@ -26,6 +31,44 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        email=findViewById(R.id.email)
+        password=findViewById(R.id.passwordEditText)
+        btn=findViewById(R.id.loginbtn)
+        reg=findViewById(R.id.register)
+
+        auth = Firebase.auth
+
+//        For password visibility
+        val passwordInputLayout = findViewById<TextInputLayout>(R.id.passwordInputLayout)
+
+        // Set the initial icon to the "eye-off" drawable (password hidden)
+        passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this, R.drawable.eyeclose)
+
+        // Variable to keep track of password visibility state
+        var isPasswordVisible = false
+
+        // Toggle password visibility when the end icon is clicked
+        passwordInputLayout.setEndIconOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Show password
+                password.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this,
+                    R.drawable.eyeopen
+                )
+            } else {
+                // Hide password
+                password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                passwordInputLayout.endIconDrawable = ContextCompat.getDrawable(this,
+                    R.drawable.eyeclose
+                )
+            }
+
+            // Move the cursor to the end after toggling
+            password.setSelection(password.text.length)
+        }
 
 
 
