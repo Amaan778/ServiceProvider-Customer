@@ -2,6 +2,7 @@ package com.app.serviceprovidercust.auth
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
@@ -70,7 +71,15 @@ class LoginActivity : AppCompatActivity() {
             password.setSelection(password.text.length)
         }
 
+        //        going to register screen
+        reg.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
+        }
 
+        if (restore()){
+            startActivity(Intent(this, Dashboard::class.java))
+            finish()
+        }
 
     }
 
