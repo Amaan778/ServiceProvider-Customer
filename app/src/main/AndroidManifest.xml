@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ServiceProviderCust"
         tools:targetApi="31">
         <activity
+            android:name=".Dashboard"
+            android:exported="false" />
+        <activity
             android:name=".services.ProductDetails"
             android:exported="false" />
         <activity
