@@ -9,11 +9,13 @@ import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.app.serviceprovidercust.Dashboard
 import com.app.serviceprovidercust.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -79,6 +81,42 @@ class LoginActivity : AppCompatActivity() {
         if (restore()){
             startActivity(Intent(this, Dashboard::class.java))
             finish()
+        }
+
+        btn.setOnClickListener {
+
+            val mail=email.text.toString().trim()
+            val pass=password.text.toString().trim()
+
+            if (mail.isEmpty()){
+                email.error="Required"
+            }
+            else if (pass.isEmpty()){
+                password.error="Required"
+            }
+            else{
+
+                showdialog()
+                auth.signInWithEmailAndPassword(mail,pass)
+                    .addOnCompleteListener(this){task->
+                        if (task.isSuccessful){
+
+                            Toast.makeText(baseContext, "Login sucessful", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, Dashboard::class.java))
+                            finish()
+                            saved()
+                            diaog?.dismiss()
+
+                        }
+                        else{
+                            Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                            diaog?.dismiss()
+                        }
+
+                    }
+
+            }
+
         }
 
     }
